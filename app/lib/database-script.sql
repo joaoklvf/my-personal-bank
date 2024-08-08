@@ -7,7 +7,9 @@ CREATE TABLE category (
 
 CREATE TABLE wallet (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    wallet_description VARCHAR(50) NOT NULL
+    wallet_description VARCHAR(50) NOT NULL,
+    wallet_color VARCHAR(7) NOT NULL,
+    wallet_background_color VARCHAR(7) NOT NULL,
 );
 
 CREATE TABLE payment_status (

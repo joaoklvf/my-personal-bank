@@ -1,3 +1,5 @@
+'use server';
+
 import { db } from "@/database"
 import { WalletUpdate, NewWallet, SelectWallet } from "../interfaces/wallet"
 
@@ -20,7 +22,7 @@ export async function findWalletById(id: string) {
     .executeTakeFirst()
 }
 
-export async function findPeople(criteria: Partial<SelectWallet>) {
+export async function findWallet(criteria: Partial<SelectWallet>) {
   let query = db.selectFrom('wallet')
 
   if (criteria.id) {
@@ -34,18 +36,18 @@ export async function findPeople(criteria: Partial<SelectWallet>) {
   return await query.selectAll().execute()
 }
 
-export async function updateWallet(id: string, updateWith: WalletUpdate) {
+export async function editWallet(id: string, updateWith: WalletUpdate) {
   await db.updateTable('wallet').set(updateWith).where('id', '=', id).execute()
 }
 
-export async function createWallet(wallet: NewWallet) {
+export async function addWallet(wallet: NewWallet) {
   return await db.insertInto('wallet')
     .values(wallet)
     .returningAll()
     .executeTakeFirstOrThrow()
 }
 
-export async function deleteWallet(id: string) {
+export async function removeWallet(id: string) {
   return await db.deleteFrom('wallet').where('id', '=', id)
     .returningAll()
     .executeTakeFirst()
