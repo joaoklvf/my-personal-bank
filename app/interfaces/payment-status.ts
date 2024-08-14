@@ -1,7 +1,7 @@
 import { Generated, Insertable, Selectable, Updateable } from "kysely";
 
 export interface PaymentStatusTable  {
-  id: Generated<string>;
+  payment_status_id: Generated<string>;
   payment_status_description: string;
 }
 
