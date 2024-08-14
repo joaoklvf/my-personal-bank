@@ -5,6 +5,7 @@ export interface InstallmentTable {
   installment_number: number;
   installment_date: Date;
   payment_status_id: string;
+  movement_id: string;
 }
 
 export type SelectInstallment = Selectable<InstallmentTable>

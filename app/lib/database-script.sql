@@ -20,7 +20,8 @@ CREATE TABLE installment (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     installment_number INT NOT NULL,
     installment_date DATE NOT NULL,
-    payment_status_id UUID NOT NULL REFERENCES payment_status(id)
+    payment_status_id UUID NOT NULL REFERENCES payment_status(id),
+    movement_id UUID NOT NULL REFERENCES movement(id)
 );
 CREATE TABLE movement (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
@@ -28,6 +29,5 @@ CREATE TABLE movement (
     movement_date DATE NOT NULL,
     category_id UUID NOT NULL REFERENCES category(id),
     wallet_id UUID NOT NULL REFERENCES wallet(id),
-    amount NUMERIC(12, 2) NOT NULL,
-    payment_status_id UUID NOT NULL REFERENCES payment_status(id)
+    amount NUMERIC(12, 2) NOT NULL
 );

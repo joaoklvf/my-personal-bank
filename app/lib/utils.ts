@@ -1,26 +1,5 @@
 import { Revenue } from './definitions';
 
-export const formatCurrency = (amount: number) => {
-  return (amount / 100).toLocaleString('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  });
-};
-
-export const formatDateToLocal = (
-  dateStr: string,
-  locale: string = 'en-US',
-) => {
-  const date = new Date(dateStr);
-  const options: Intl.DateTimeFormatOptions = {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-  };
-  const formatter = new Intl.DateTimeFormat(locale, options);
-  return formatter.format(date);
-};
-
 export const generateYAxis = (revenue: Revenue[]) => {
   // Calculate what labels we need to display on the y-axis
   // based on highest record and in 1000s
@@ -67,3 +46,17 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     totalPages,
   ];
 };
+
+export const formatDateToLocal = (value: Date) =>
+  value.toLocaleDateString('pt-BR').toString();
+
+export const removePointsFromDecimalString = (value: string) =>
+  value.replaceAll('.', '').replace(',', '.');
+
+export const formatDecimal = (value: string) => {
+  const amountNumber = Number(removePointsFromDecimalString(value)) / 100;
+  return amountNumber.toLocaleString('pt-BR', { style: 'decimal', minimumFractionDigits: 2 });
+}
+export const formatCurrency = (value: number | string) => {
+  return Number(value).toLocaleString('pt-BR', { style: 'currency', minimumFractionDigits: 2, currency: 'BRL' });
+}

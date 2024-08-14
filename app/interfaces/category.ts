@@ -1,7 +1,7 @@
 import { Generated, Insertable, Selectable, Updateable } from 'kysely';
 
 export interface CategoryTable {
-  id: Generated<string>;
+  category_id: Generated<string>;
   category_description: string;
   category_color: string;
   category_background_color: string;

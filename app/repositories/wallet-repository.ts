@@ -2,13 +2,14 @@
 
 import { db } from "@/database"
 import { WalletUpdate, NewWallet, SelectWallet } from "../interfaces/wallet"
+import { Wallet } from "../models/wallet";
 
-export async function findAllWallets() {
+export async function findAllWallets(): Promise<Wallet[] | null> {
   try {
     return await db.selectFrom('wallet')
       .selectAll()
-      .execute()
-      .catch((ex) => console.log("erro execute", ex))
+      .execute();
+      
   } catch (error) {
     console.log("erro catch", error)
   }
@@ -17,7 +18,7 @@ export async function findAllWallets() {
 
 export async function findWalletById(id: string) {
   return await db.selectFrom('wallet')
-    .where('id', '=', id)
+    .where('wallet_id', '=', id)
     .selectAll()
     .executeTakeFirst()
 }
@@ -25,8 +26,8 @@ export async function findWalletById(id: string) {
 export async function findWallet(criteria: Partial<SelectWallet>) {
   let query = db.selectFrom('wallet')
 
-  if (criteria.id) {
-    query = query.where('id', '=', criteria.id) // Kysely is immutable, you must re-assign!
+  if (criteria.wallet_id) {
+    query = query.where('wallet_id', '=', criteria.wallet_id) // Kysely is immutable, you must re-assign!
   }
 
   if (criteria.wallet_description) {
@@ -37,7 +38,7 @@ export async function findWallet(criteria: Partial<SelectWallet>) {
 }
 
 export async function editWallet(id: string, updateWith: WalletUpdate) {
-  await db.updateTable('wallet').set(updateWith).where('id', '=', id).execute()
+  await db.updateTable('wallet').set(updateWith).where('wallet_id', '=', id).execute()
 }
 
 export async function addWallet(wallet: NewWallet) {
@@ -48,7 +49,7 @@ export async function addWallet(wallet: NewWallet) {
 }
 
 export async function removeWallet(id: string) {
-  return await db.deleteFrom('wallet').where('id', '=', id)
+  return await db.deleteFrom('wallet').where('wallet_id', '=', id)
     .returningAll()
     .executeTakeFirst()
 }

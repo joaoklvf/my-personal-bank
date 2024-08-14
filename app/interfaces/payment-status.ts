@@ -5,6 +5,6 @@ export interface PaymentStatusTable  {
   payment_status_description: string;
 }
 
-export type SelectWallet = Selectable<PaymentStatusTable>
+export type SelectPaymentStatus = Selectable<PaymentStatusTable>
 export type NewPaymentStatus = Insertable<PaymentStatusTable>
 export type PaymentStatusUpdate = Updateable<PaymentStatusTable>

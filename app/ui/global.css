@@ -21,3 +21,8 @@ input[type='color']::-webkit-color-swatch {
   border: none;
   border-radius: 1rem;
 }
+
+select option:hover {
+  background-color: inherit; /* Mantém a cor de fundo original */
+  color: inherit;            /* Mantém a cor do texto original */
+}

@@ -15,7 +15,7 @@ export default function EditWalletForm({
   wallet: Wallet;
 }) {
   const initialState: WalletState = { message: null, errors: {} };
-  const updateWalletWithId = updateWallet.bind(null, wallet.id);
+  const updateWalletWithId = updateWallet.bind(null, wallet.wallet_id);
   const [state, formAction] = useActionState(updateWalletWithId, initialState);
 
   return (

@@ -17,7 +17,7 @@ export default async function WalletsTable({
           <div className="md:hidden">
             {wallets?.map((wallet) => (
               <div
-                key={wallet.id}
+                key={wallet.wallet_id}
                 className="mb-2 w-full rounded-md bg-white p-4"
               >
                 <div className="flex w-full items-center justify-between pt-4 gap-3 items-stretch">
@@ -25,8 +25,8 @@ export default async function WalletsTable({
                     <b>{wallet.wallet_description}</b>
                   </div>
                   <div className="flex justify-end gap-2">
-                    <UpdateWallet id={wallet.id} />
-                    <DeleteWallet id={wallet.id} />
+                    <UpdateWallet id={wallet.wallet_id} />
+                    <DeleteWallet id={wallet.wallet_id} />
                   </div>
                 </div>
               </div>
@@ -46,7 +46,7 @@ export default async function WalletsTable({
             <tbody className="bg-white">
               {wallets?.map((wallet) => (
                 <tr
-                  key={wallet.id}
+                  key={wallet.wallet_id}
                   className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                 >
                   <td className="whitespace-nowrap py-3 pl-6 pr-3 w-full">
@@ -56,8 +56,8 @@ export default async function WalletsTable({
                   </td>
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
-                      <UpdateWallet id={wallet.id} />
-                      <DeleteWallet id={wallet.id} />
+                      <UpdateWallet id={wallet.wallet_id} />
+                      <DeleteWallet id={wallet.wallet_id} />
                     </div>
                   </td>
                 </tr>
