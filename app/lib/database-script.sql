@@ -17,7 +17,7 @@ CREATE TABLE payment_status (
     payment_status_description VARCHAR(50) NOT NULL
 );
 CREATE TABLE installment (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    installment_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     installment_number INT NOT NULL,
     installment_date DATE NOT NULL,
     payment_status_id UUID NOT NULL REFERENCES payment_status(id),
