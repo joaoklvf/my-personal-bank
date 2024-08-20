@@ -4,7 +4,7 @@ import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
 import { TableContainer } from './styles';
 import { SelectMovementJoined } from '@/app/interfaces/movement';
 
-export default function MovementsTable({ movements }: { movements: SelectMovementJoined[] | null | void; }) { 
+export default function MovementsTable({ movements }: { movements: SelectMovementJoined[] | null | void; }) {
   return (
     <TableContainer className="mt-6 flow-root">
       <div className="inline-block min-w-full align-middle">
@@ -15,18 +15,15 @@ export default function MovementsTable({ movements }: { movements: SelectMovemen
                 key={movement.movement_id}
                 className="mb-2 w-full rounded-md bg-white p-4"
               >
-                <div className="flex items-center justify-between border-b pb-4">
-                  <div>
+                <div className="flex flex-row items-center justify-between border-b pb-4 gap-2">
+                  <div className='basis-2/3'>
                     <div className="mb-2 flex items-center">
                       <p>{movement.movement_description}</p>
                     </div>
-                    {/* <p className="text-sm text-gray-500">{movement.email}</p> */}
+                    <p className="text-sm text-gray-500">{movement.category_description}</p>
                   </div>
-                  <div className="rounded-md border w-full text-center rounded content-center" style={{ backgroundColor: movement.wallet_background_color, color: movement.wallet_color }}>
+                  <div className="basis-1/3 text-center rounded-md border flex items-center rounded-lg justify-center h-9 lh-0.5" style={{ backgroundColor: movement.wallet_background_color, color: movement.wallet_color }}>
                     <b>{movement.wallet_description}</b>
-                  </div>
-                  <div className="rounded-md border w-full text-center rounded content-center" style={{ backgroundColor: movement.category_background_color, color: movement.category_color }}>
-                    <b>{movement.category_description}</b>
                   </div>
                 </div>
                 <div className="flex w-full items-center justify-between pt-4">
@@ -51,10 +48,10 @@ export default function MovementsTable({ movements }: { movements: SelectMovemen
                   Movimentação
                 </th>
                 <th scope="col" className='w-2/12 lg:w-3/12'>
-                  Carteira
+                  Categoria
                 </th>
                 <th scope="col" className='w-2/12 lg:w-3/12'>
-                  Categoria
+                  Carteira
                 </th>
                 <th scope="col" className='w-2/12'>
                   Valor
@@ -79,13 +76,13 @@ export default function MovementsTable({ movements }: { movements: SelectMovemen
                     </div>
                   </td>
                   <td>
-                    <div className="rounded-md border flex items-center rounded-lg justify-center h-9 lh-0.5" style={{ backgroundColor: movement.wallet_background_color, color: movement.wallet_color }}>
-                      <b>{movement.wallet_description}</b>
+                    <div>
+                      {movement.category_description}
                     </div>
                   </td>
                   <td>
-                    <div className="rounded-md border flex items-center rounded-lg justify-center h-9 lh-0.5" style={{ backgroundColor: movement.category_background_color, color: movement.category_color }}>
-                      <b>{movement.category_description}</b>
+                    <div className="text-center rounded-md border flex items-center rounded-lg justify-center h-9 lh-0.5" style={{ backgroundColor: movement.wallet_background_color, color: movement.wallet_color }}>
+                      <b>{movement.wallet_description}</b>
                     </div>
                   </td>
                   <td className='text-right'>

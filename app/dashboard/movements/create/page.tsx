@@ -1,5 +1,5 @@
-import CreateMovementForm from '@/app/ui/movements/create-form';
-import Breadcrumbs from '@/app/ui/invoices/breadcrumbs';
+import { CreateMovementForm } from '@/app/ui/movements/create-form/create-form';
+import Breadcrumbs from '@/app/ui/breadcrumbs/breadcrumbs';
 import { Metadata } from 'next';
 import { findAllCategories } from '@/app/repositories/category-repository';
 import { findAllWallets } from '@/app/repositories/wallet-repository';

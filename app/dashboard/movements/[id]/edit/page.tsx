@@ -4,6 +4,7 @@ import { findMovementById } from '@/app/repositories/movement-repository';
 import EditMovementForm from '@/app/ui/movements/edit-form';
 import { findAllCategories } from '@/app/repositories/category-repository';
 import { findAllWallets } from '@/app/repositories/wallet-repository';
+import Breadcrumbs from '@/app/ui/breadcrumbs/breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Edit Movement',
@@ -21,6 +22,16 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <main>
+      <Breadcrumbs
+        breadcrumbs={[
+          { label: 'Transações', href: '/dashboard/movements' },
+          {
+            label: 'Editar transação',
+            href: `/dashboard/movements/${id}/edit`,
+            active: true,
+          },
+        ]}
+      />
       <EditMovementForm movement={movement} categories={categories} wallets={wallets} />
     </main>
   );
