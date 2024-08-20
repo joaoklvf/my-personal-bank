@@ -1,4 +1,4 @@
-import Breadcrumbs from '@/app/ui/invoices/breadcrumbs';
+import Breadcrumbs from '@/app/ui/breadcrumbs/breadcrumbs';
 import CreateWalletForm from '@/app/ui/wallets/create-form';
 import { Metadata } from 'next';
 
